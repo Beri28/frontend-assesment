@@ -100,8 +100,7 @@ const activeStakings: ActiveStaking[] = [
 
 const Sidebar: React.FC = () => {
   return (
-    // Sidebar is hidden on small screens and shown on large screens
-    <div className={`hidden lg:flex w-64 bg-[${colors.cardBg}] text-[${colors.textColor}] flex-col p-6 rounded-2xl shadow-lg h-[96vh] my-4 ml-4`}>
+    <div className={`w-64 bg-[${colors.cardBg}] text-[${colors.textColor}] flex flex-col p-6 rounded-2xl shadow-lg h-[96vh] my-4 ml-4`}>
       {/* Logo and Stakent */}
       <div className="flex items-center mb-10">
         <Star className={`text-[${colors.accentColor}] mr-3`} size={32} />
@@ -188,16 +187,16 @@ const Sidebar: React.FC = () => {
 // components/Header.tsx
 const Header: React.FC = () => {
   return (
-    <header className={`flex flex-col md:flex-row items-center justify-between p-4 bg-[${colors.cardBg}] rounded-2xl shadow-lg my-4 mx-4 md:mx-0`}>
+    <header className={`flex items-center justify-between p-4 bg-[${colors.cardBg}] rounded-2xl shadow-lg my-4 mr-4`}>
       {/* Left section: Stakent Logo and Top Staking Assets */}
-      <div className="flex items-center mb-4 md:mb-0">
+      <div className="flex items-center">
         <Star className={`text-[${colors.accentColor}] mr-2`} size={28} />
         <span className={`text-xl font-bold text-[${colors.white}] mr-6`}>Stakent</span>
-        <span className={`text-[${colors.grayText}] text-sm hidden md:block`}>Top Staking Assets</span>
+        <span className={`text-[${colors.grayText}] text-sm`}>Top Staking Assets</span>
       </div>
 
       {/* Middle section: User Info and Deposit Button */}
-      <div className="flex items-center space-x-4 mb-4 md:mb-0">
+      <div className="flex items-center space-x-4">
         <div className={`flex items-center bg-[${colors.secondaryBg}] p-2 rounded-full`}>
           <img
             src="https://placehold.co/30x30/e94560/ffffff?text=RC"
@@ -213,13 +212,13 @@ const Header: React.FC = () => {
       </div>
 
       {/* Right section: Search, Notifications, Settings */}
-      <div className="flex items-center space-x-4 w-full md:w-auto justify-end">
-        <div className="relative flex-1 md:flex-none">
+      <div className="flex items-center space-x-4">
+        <div className="relative">
           <Search className={`absolute left-3 top-1/2 -translate-y-1/2 text-[${colors.grayText}]`} size={20} />
           <input
             type="text"
             placeholder="Search"
-            className={`bg-[${colors.secondaryBg}] text-[${colors.white}] rounded-full py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-[${colors.accentColor}] w-full`}
+            className={`bg-[${colors.secondaryBg}] text-[${colors.white}] rounded-full py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-[${colors.accentColor}]`}
           />
         </div>
         <button className={`p-2 rounded-full bg-[${colors.secondaryBg}] hover:bg-[${colors.hoverColor}]`}>
@@ -241,7 +240,7 @@ interface StakingAssetCardProps {
 const StakingAssetCard: React.FC<StakingAssetCardProps> = ({ asset }) => {
   const isUp = asset.trend === 'up';
   return (
-    <div className={`bg-[${colors.cardBg}] p-6 rounded-xl shadow-md flex flex-col items-start w-full md:w-1/2 lg:w-1/3 mb-4 md:mb-0 mx-0 md:mx-2`}>
+    <div className={`bg-[${colors.cardBg}] p-6 rounded-xl shadow-md flex flex-col items-start w-1/3 mx-2`}>
       <div className="flex items-center mb-4">
         {asset.icon}
         <span className={`ml-3 text-lg font-semibold text-[${colors.white}]`}>Proof of Stake</span>
@@ -341,7 +340,7 @@ const activeStakingsData: ActiveStaking[] = [
 
 const HomeDashboard: React.FC = () => {
   return (
-    <div className={`flex flex-col lg:flex-row min-h-screen bg-[${colors.primaryBg}] font-inter`}>
+    <div className={`flex min-h-screen bg-[${colors.primaryBg}] font-inter`}>
       <Head>
         <title>Stakent Dashboard</title>
         <meta name="description" content="Stakent Dashboard UI" />
@@ -361,22 +360,22 @@ const HomeDashboard: React.FC = () => {
         <Header />
 
         {/* Main Dashboard Content Area */}
-        <main className={`flex-1 p-4 sm:p-6 bg-[${colors.secondaryBg}] rounded-2xl shadow-lg overflow-y-auto`}>
+        <main className={`flex-1 p-6 bg-[${colors.secondaryBg}] rounded-2xl shadow-lg overflow-y-auto`}>
           {/* Top Staking Assets Section */}
           <section className="mb-8">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6">
-              <div className="flex flex-wrap space-x-3 mb-4 sm:mb-0">
-                <button className={`bg-[${colors.accentColor}] text-[${colors.white}] px-5 py-2 rounded-full font-semibold mb-2 sm:mb-0`}>Staking</button>
-                <button className={`bg-[${colors.secondaryBg}] text-[${colors.grayText}] px-5 py-2 rounded-full hover:bg-[${colors.hoverColor}] mb-2 sm:mb-0`}>Stablecoin</button>
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex space-x-3">
+                <button className={`bg-[${colors.accentColor}] text-[${colors.white}] px-5 py-2 rounded-full font-semibold`}>Staking</button>
+                <button className={`bg-[${colors.secondaryBg}] text-[${colors.grayText}] px-5 py-2 rounded-full hover:bg-[${colors.hoverColor}]`}>Stablecoin</button>
               </div>
-              <div className={`flex flex-wrap items-center space-x-2 sm:space-x-4 text-[${colors.grayText}] text-sm justify-end`}>
-                <span className="mb-2 sm:mb-0">Recommended coins for 24 hours</span>
-                <span className={`bg-[${colors.secondaryBg}] px-3 py-1 rounded-full mb-2 sm:mb-0`}>3 Assets</span>
-                <div className="flex items-center space-x-2 mb-2 sm:mb-0">
+              <div className={`flex items-center space-x-4 text-[${colors.grayText}] text-sm`}>
+                <span>Recommended coins for 24 hours</span>
+                <span className={`bg-[${colors.secondaryBg}] px-3 py-1 rounded-full`}>3 Assets</span>
+                <div className="flex items-center space-x-2">
                   <span className={`text-[${colors.grayText}]`}>24H</span>
                   <ChevronDown size={16} />
                 </div>
-                <div className="flex items-center space-x-2 mb-2 sm:mb-0">
+                <div className="flex items-center space-x-2">
                   <span className={`text-[${colors.grayText}]`}>Proof of Stake</span>
                   <ChevronDown size={16} />
                 </div>
@@ -389,7 +388,7 @@ const HomeDashboard: React.FC = () => {
 
             <h2 className={`text-2xl font-bold text-[${colors.white}] mb-6`}>Top Staking Assets</h2>
 
-            <div className="flex flex-col md:flex-row justify-between -mx-2">
+            <div className="flex justify-between -mx-2">
               {stakingAssets.map((asset: StakingAsset) => (
                 <StakingAssetCard key={asset.id} asset={asset} />
               ))}
@@ -397,27 +396,27 @@ const HomeDashboard: React.FC = () => {
           </section>
 
           {/* Liquid Staking Portfolio */}
-          <section className={`bg-[${colors.cardBg}] p-6 rounded-xl shadow-md mb-8 flex flex-col md:flex-row items-start md:items-center justify-between`}>
-            <div className="flex items-center mb-4 md:mb-0">
+          <section className={`bg-[${colors.cardBg}] p-6 rounded-xl shadow-md mb-8 flex items-center justify-between`}>
+            <div className="flex items-center">
               <Star className={`text-[${colors.accentColor}] mr-3`} size={28} />
               <div>
-                <h3 className={`text-xl font-bold text-[${colors.white}] flex items-center flex-wrap`}>
-                  Liquid Staking Portfolio <span className={`ml-2 text-xs bg-[${colors.accentColor}] px-2 py-1 rounded-full mt-1 md:mt-0`}>New</span>
+                <h3 className={`text-xl font-bold text-[${colors.white}] flex items-center`}>
+                  Liquid Staking Portfolio <span className={`ml-2 text-xs bg-[${colors.accentColor}] px-2 py-1 rounded-full`}>New</span>
                 </h3>
-                <p className={`text-[${colors.grayText}] text-sm mt-1 max-w-full md:max-w-sm`}>
+                <p className={`text-[${colors.grayText}] text-sm mt-1 max-w-sm`}>
                   An all-in-one portfolio that helps you make smarter investments into Ethereum Liquid Staking
                 </p>
               </div>
             </div>
-            <div className="flex flex-col items-end space-y-4 w-full md:w-auto">
-              <button className={`bg-[${colors.accentColor}] hover:bg-opacity-80 text-[${colors.white}] font-semibold py-3 px-6 rounded-full flex items-center w-full md:w-auto justify-center`}>
+            <div className="flex flex-col items-end space-y-4">
+              <button className={`bg-[${colors.accentColor}] hover:bg-opacity-80 text-[${colors.white}] font-semibold py-3 px-6 rounded-full flex items-center`}>
                 <Wallet size={20} className="mr-2" />
                 Connect with Wallet
               </button>
               <input
                 type="text"
                 placeholder="Enter a Wallet Address"
-                className={`bg-[${colors.primaryBg}] text-[${colors.white}] rounded-full py-3 px-6 focus:outline-none focus:ring-2 focus:ring-[${colors.accentColor}] w-full md:w-64`}
+                className={`bg-[${colors.primaryBg}] text-[${colors.white}] rounded-full py-3 px-6 focus:outline-none focus:ring-2 focus:ring-[${colors.accentColor}] w-64`}
               />
             </div>
           </section>
@@ -425,7 +424,7 @@ const HomeDashboard: React.FC = () => {
           {/* Your Active Stakings */}
           <section className="mb-8">
             <h2 className={`text-2xl font-bold text-[${colors.white}] mb-6`}>Your active stakings</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-4">
               {activeStakingsData.map((staking: ActiveStaking) => (
                 <ActiveStakingItem key={staking.id} asset={staking.asset} amount={staking.amount} icon={staking.icon} />
               ))}
@@ -434,28 +433,28 @@ const HomeDashboard: React.FC = () => {
               <ActiveStakingItem asset="Balance MAX" amount="31.39686" icon={<CreditCard size={20} className={`text-[${colors.greenText}]`} />} />
             </div>
 
-            <div className={`flex flex-col md:flex-row items-start md:items-center justify-between mt-6 bg-[${colors.cardBg}] p-6 rounded-xl shadow-md`}>
-                <div className="flex items-center mb-4 md:mb-0">
+            <div className={`flex items-center justify-between mt-6 bg-[${colors.cardBg}] p-6 rounded-xl shadow-md`}>
+                <div className="flex items-center">
                     <Star className={`text-[${colors.accentColor}] mr-3`} size={28} />
                     <div>
                         <h3 className={`text-xl font-bold text-[${colors.white}]`}>Stake Avalanche (AVAX)</h3>
                         <p className={`text-[${colors.grayText}] text-sm`}>Last Update - 40 minutes ago</p>
                     </div>
                 </div>
-                <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 w-full md:w-auto">
-                    <button className={`bg-[${colors.accentColor}] hover:bg-opacity-80 text-[${colors.white}] font-semibold py-2 px-4 rounded-full w-full sm:w-auto`}>
+                <div className="flex items-center space-x-4">
+                    <button className={`bg-[${colors.accentColor}] hover:bg-opacity-80 text-[${colors.white}] font-semibold py-2 px-4 rounded-full`}>
                         Upgrade
                     </button>
-                    <button className={`bg-[${colors.secondaryBg}] hover:bg-[${colors.hoverColor}] text-[${colors.white}] font-semibold py-2 px-4 rounded-full w-full sm:w-auto`}>
+                    <button className={`bg-[${colors.secondaryBg}] hover:bg-[${colors.hoverColor}] text-[${colors.white}] font-semibold py-2 px-4 rounded-full`}>
                         Unstake
                     </button>
-                    <button className={`text-[${colors.purpleText}] hover:text-opacity-80 text-sm flex items-center w-full sm:w-auto justify-center sm:justify-start`}>
+                    <button className={`text-[${colors.purpleText}] hover:text-opacity-80 text-sm flex items-center`}>
                         View Profile <ExternalLink size={16} className="ml-1" />
                     </button>
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+            <div className="grid grid-cols-4 gap-4 mt-6">
                 <div className={`bg-[${colors.cardBg}] p-6 rounded-xl shadow-md`}>
                     <p className={`text-[${colors.grayText}] text-sm mb-2`}>Momentum</p>
                     <p className={`text-[${colors.white}] font-semibold`}>Growth dynamics</p>
@@ -492,8 +491,8 @@ const HomeDashboard: React.FC = () => {
                 </div>
             </div>
 
-            <div className={`flex flex-col sm:flex-row items-start sm:items-center justify-between mt-6 bg-[${colors.cardBg}] p-6 rounded-xl shadow-md`}>
-                <div className="flex items-center space-x-4 mb-4 sm:mb-0">
+            <div className={`flex items-center justify-between mt-6 bg-[${colors.cardBg}] p-6 rounded-xl shadow-md`}>
+                <div className="flex items-center space-x-4">
                     <div className={`bg-[${colors.primaryBg}] p-3 rounded-full`}>
                         <Zap className={`text-[${colors.yellowText}]`} size={24} />
                     </div>
@@ -502,7 +501,7 @@ const HomeDashboard: React.FC = () => {
                         <p className={`text-[${colors.grayText}] text-sm`}>Unlock all features on Stakent</p>
                     </div>
                 </div>
-                <button className={`bg-[${colors.accentColor}] hover:bg-opacity-80 text-[${colors.white}] font-semibold py-2 px-4 rounded-full w-full sm:w-auto`}>
+                <button className={`bg-[${colors.accentColor}] hover:bg-opacity-80 text-[${colors.white}] font-semibold py-2 px-4 rounded-full`}>
                     Upgrade
                 </button>
             </div>
