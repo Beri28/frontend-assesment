@@ -1,65 +1,5 @@
 // types.ts (You would typically put this in a separate file like `types/index.ts`)
 import React from 'react';
-
-// Define a color palette for consistency
-export interface AppColors {
-  primaryBg: string;
-  secondaryBg: string;
-  cardBg: string;
-  textColor: string;
-  accentColor: string;
-  secondaryAccent: string;
-  borderColor: string;
-  hoverColor: string;
-  purpleText: string;
-  greenText: string;
-  redText: string;
-  yellowText: string;
-  grayText: string;
-  lightGrayText: string;
-  darkGrayText: string;
-  white: string;
-}
-
-export const colors: AppColors = {
-  primaryBg: '#111317', // Darker background for the overall page
-  secondaryBg: '#191b1f', // Slightly lighter background for main content area
-  cardBg: '#212428', // Card background color
-  textColor: '#e0e0e0', // Light text color
-  accentColor: '#9246FF', // Primary purple accent
-  secondaryAccent: '#4A4C51', // Grayish accent for some buttons/elements
-  borderColor: '#33363b', // Border color for elements
-  hoverColor: '#2a2d32', // Hover state color for interactive elements
-  purpleText: '#9246FF',
-  greenText: '#22C55E',
-  redText: '#EF4444',
-  yellowText: '#FACC15',
-  grayText: '#A0A0A0',
-  lightGrayText: '#C0C0C0',
-  darkGrayText: '#606060',
-  white: '#ffffff',
-};
-
-// Define types for Staking Asset data
-export interface StakingAsset {
-  id: number;
-  name: string;
-  icon: React.ReactNode; // Using React.ReactNode for Lucide icons
-  rewardRate: string;
-  change: string;
-  chartData: string; // SVG path data
-  trend: 'up' | 'down';
-}
-
-// Define types for Active Staking data
-export interface ActiveStaking {
-  id: number;
-  asset: string;
-  amount: string;
-  icon: React.ReactNode;
-}
-
-// components/Sidebar.tsx
 import {
   Wallet,
   Calculator,
@@ -298,6 +238,7 @@ const ActiveStakingItem: React.FC<ActiveStakingItemProps> = ({ asset, amount, ic
 
 // pages/index.tsx
 import Head from 'next/head';
+import { ActiveStaking, colors, StakingAsset } from '@/types/types';
 
 // Mock data for staking assets (moved here for HomeDashboard component)
 const stakingAssets: StakingAsset[] = [
