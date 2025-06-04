@@ -27,6 +27,7 @@ import LineChart from './LineChart';
 import LiquidStakingPortfolio from './LiquidStakingPortfolio';
 import { Divider, IconButton } from '@mui/material';
 import Header from './Header';
+import InvestmentPeriod from './InvestmentPeriod';
 
 // Sample data for charts
 const generateChartData = (length: number, trend: 'up' | 'down' | 'mixed'): number[] => {
@@ -210,48 +211,53 @@ const StakingDashboard = () => {
           </div>
         </div>
       <div className="bg-[#131417] rounded-2xl p-6 border border-[#27272A]">
-        {/* Header Section */}
-        <div className="flex items-center justify-between mb-6">
-          <div className="space-y-1">
-            <div className="flex items-center text-[#71717A] text-xs">
-              <span className='text-purple-200'>Last Update - 45 minutes ago</span>
-              <Clock className="w-4 h-4 ml-2 text-purple-200" fill='#7C3AED' />
+        <div className='flex items-start' >
+          <div className='flex-1'>
+            {/* Header Section */}
+            <div className="flex items-center justify-between mb-6">
+              <div className="space-y-1">
+                <div className="flex items-center text-[#71717A] text-xs">
+                  <span className='text-purple-200'>Last Update - 45 minutes ago</span>
+                  <Clock className="w-4 h-4 ml-2 text-purple-200" fill='#7C3AED' />
+                </div>
+                <div className="flex items-center space-x-3">
+                  <h1 className="text-2xl font-semibold text-white">Stake Avalance (AVAX)</h1>
+                  <img src="/avax-logo.svg" alt="AVAX" className="w-6 h-6" />
+                  <div className="flex items-center space-x-2">
+                    <button className="p-2 rounded-full bg-black text-white hover:bg-[#27272A] border-t border-l border-[#27272A]">
+                      <LinkIcon className="w-4 h-4" />{' '}
+                    </button>
+                    <button className="p-2 rounded-full bg-black text-white hover:bg-[#27272A] border-t border-l border-[#27272A]">
+                      {" "}
+                      <Share2 className="w-4 h-4" />
+                    </button>
+                    <button className="flex items-center text-white text-xs hover:underline border-t border-l border-[#27272A] bg-black p-3 rounded-xl">
+                      View Profile
+                      {/* <ExternalLink className="w-4 h-4 ml-1" /> */}
+                      <ArrowUpRight size={14} className="w-4 h-4 ml-1" />
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="flex items-center space-x-3">
-              <h1 className="text-2xl font-semibold text-white">Stake Avalance (AVAX)</h1>
-              <img src="/avax-logo.svg" alt="AVAX" className="w-6 h-6" />
-              <div className="flex items-center space-x-2">
-                <button className="p-2 rounded-full bg-black text-white hover:bg-[#27272A] border-t border-l border-[#27272A]">
-                  <LinkIcon className="w-4 h-4" />{' '}
-                </button>
-                <button className="p-2 rounded-full bg-black text-white hover:bg-[#27272A] border-t border-l border-[#27272A]">
-                  {" "}
-                  <Share2 className="w-4 h-4" />
-                </button>
-                <button className="flex items-center text-white text-xs hover:underline border-t border-l border-[#27272A] bg-black p-3 rounded-xl">
-                  View Profile
-                  {/* <ExternalLink className="w-4 h-4 ml-1" /> */}
-                  <ArrowUpRight size={14} className="w-4 h-4 ml-1" />
-                </button>
+
+            {/* Balance Section */}
+            <div className="mb-8">
+              <div className="text-[#71717A] text-sm mb-2">Current Reward Balance, AVAX</div>
+              <div className="text-white text-5xl font-semibold tracking-tight flex items-center gap-4">
+                31.39686
+                <div className="flex items-center space-x-3">
+                  <button className="px-4 py-2 bg-[#7C3AED] text-black rounded-xl text-sm font-medium hover:bg-[#6D28D9]">
+                    Upgrade
+                  </button>
+                  <button className="px-4 py-2 text-white rounded-xl text-sm font-medium hover:bg-[#27272A] border-t border-l border-[#27272A]">
+                    Unstake
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Balance Section */}
-        <div className="mb-8">
-          <div className="text-[#71717A] text-sm mb-2">Current Reward Balance, AVAX</div>
-          <div className="text-white text-5xl font-semibold tracking-tight flex items-center gap-4">
-            31.39686
-            <div className="flex items-center space-x-3">
-              <button className="px-4 py-2 bg-[#7C3AED] text-black rounded-xl text-sm font-medium hover:bg-[#6D28D9]">
-                Upgrade
-              </button>
-              <button className="px-4 py-2 text-white rounded-xl text-sm font-medium hover:bg-[#27272A] border-t border-l border-[#27272A]">
-                Unstake
-              </button>
-            </div>
-          </div>
+          <InvestmentPeriod />
         </div>
 
         {/* Metrics Grid */}
