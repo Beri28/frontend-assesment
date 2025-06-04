@@ -1,33 +1,13 @@
 // types.ts (You would typically put this in a separate file like `types/index.ts`)
 import React from 'react';
 import {
-  Wallet,
-  Calculator,
-  Database,
-  GitFork,
-  Search,
-  Bell,
-  Settings,
-  Plus,
-  ChevronDown,
   ChevronRight,
-  ExternalLink,
-  Star,
   TrendingUp,
   TrendingDown,
-  Zap,
   Circle,
   Square,
   Triangle,
   Hexagon,
-  User,
-  LayoutDashboard,
-  Coins,
-  Shield,
-  CreditCard,
-  Activity,
-  DollarSign,
-  Percent,
 } from 'lucide-react';
 
 // Mock data for active stakings (moved here for Sidebar component)
