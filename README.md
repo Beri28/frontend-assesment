@@ -9,11 +9,8 @@ A modern, responsive cryptocurrency staking dashboard built with Next.js that al
 - 📊 Real-time staking metrics and analytics
 - 💰 Support for multiple assets (ETH, BNB, MATIC, etc.)
 - 📈 Interactive performance charts and trends
-- 🔐 Secure wallet connection
 - ⚡ Live reward rate tracking
 - 📱 Responsive design for all devices
-- 🌓 Dark mode support
-- 🔄 Real-time data updates
 
 ## Tech Stack
 
