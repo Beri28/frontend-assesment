@@ -45,7 +45,7 @@ const InvestmentPeriod: React.FC = () => {
   const [currentMonth, setCurrentMonth] = useState<number>(4);
 
   return (
-    <div className="border border-[#27272A] p-6 rounded-[20px] md:w-[40%]">
+    <div className="border border-[#27272A] p-6 rounded-[20px] md:w-[40%] w-full">
       <div className="flex flex-col gap-2 mb-8">
         <h3 className="text-white text-[16px] font-medium">Investment Period</h3>
         <p className="text-[#71747A] text-[10px]">Contribution Period (Month)</p>

@@ -37,14 +37,14 @@ export const Sidebar = () => {
     { icon: Calculator, label: 'Staking Calculator',isActive: false },
     { icon: ExternalLink, label: 'Data API',isActive: false },
     { icon: Droplets, label: 'Liquid Staking', badge: 'Beta',isActive: false },
-    { icon: BarChart3, label: 'Active Staking', badge: '6',isActive: false }
+    { icon: BarChart3, label: 'Active Staking', badge: '6',isActive: true }
   ]);
   
   const [activeStakings, setActiveStakings] = React.useState([
-    { asset: 'Ethereum', amount: '$7,699.00', color: '#627EEA' },
-    { asset: 'Avalanche', amount: '$1,340.00', color: '#E84142' },
-    { asset: 'Polygon (Matic)', amount: '$540.00', color: '#8247E5' },
-    { asset: 'Solana', amount: '$980.00', color: '#14F195' }
+    { asset: 'Ethereum', amount: '$7,699.00', color: '#627EEA',icon:"/eth-logo.svg" },
+    { asset: 'Avalanche', amount: '$1,340.00', color: '#E84142',icon:"/bnb-logo.svg" },
+    { asset: 'Polygon (Matic)', amount: '$540.00', color: '#8247E5',icon:"/polygon-logo.svg" },
+    { asset: 'Solana', amount: '$980.00', color: '#14F195',icon:"/eth-logo.svg" }
   ]);
   const [activeTab, setActiveTab] = React.useState('staking');
 
@@ -106,7 +106,7 @@ export const Sidebar = () => {
                 }`}
                 onClick={() => {
                     setNavItems(navItems.map((navItem, i) => 
-                      i === index ? { ...navItem, isActive: true } 
+                      i === index ? navItem?.badge==='6'?{ ...navItem, isActive: !navItem.isActive }:{ ...navItem, isActive: true } 
                     :
                     { ...navItem, isActive: false }
                     ));
@@ -129,7 +129,7 @@ export const Sidebar = () => {
                       <span
                         className={`px-2 py-0.5 rounded-full text-xs ${
                           item.badge === '6'
-                            ? 'bg-[#7C3AED] text-black'
+                            ? 'bg-[#9370db] text-black'
                             : 'bg-[#27272A] text-[#71717A]'
                         }`}
                       >
@@ -141,7 +141,7 @@ export const Sidebar = () => {
                     <span
                       className={`px-2 py-0.5 rounded-md text-xs ${
                         item.badge === 'Beta' || item.badge === '6'
-                          ? 'bg-[#7C3AED] text-black'
+                          ? 'bg-[#9370db] text-black'
                           : 'bg-[#27272A] text-[#71717A]'
                       }`}
                     >
@@ -152,19 +152,20 @@ export const Sidebar = () => {
               </button>
               {(item.isActive  && item.label==='Active Staking'  ) &&  
               <div className="rounded-lg p-4">
-                <div className="space-y-4">
+                <div className="space-y-4 border-r">
                   {activeStakings.map((staking, index) => (
                     <div 
                       key={index} 
                       className="flex items-center cursor-pointer transition-colors duration-200 p-2 rounded-lg hover:bg-[rgba(255,255,255,0.05)] active:bg-[rgba(255,255,255,0.1)]"
                     >
-                      <div
+                      {/* <div
                         className="w-5 h-5 rounded-full mr-3"
                         style={{ backgroundColor: staking.color }}
-                      />
+                      /> */}
+                      <img src={staking.icon} alt={staking.asset} className="w-5 h-5 mr-3" />
                       <div>
-                        <p className="text-white text-sm">{staking.asset}</p>
-                        <p className="text-[#52525B] text-xs">Amount {staking.amount}</p>
+                        <p className="text-[#9370db] text-xs">Asset {staking.asset}</p>
+                        <p className="text-white text-sm">Amount {staking.amount}</p>
                       </div>
                     </div>
                   ))}

@@ -132,13 +132,13 @@ const StakingDashboard = () => {
     <div className="bg-[#0D0D0F] min-h-screen">
       <Header />
       {/* Header Section */}
-      <div className='p-6 pb-0 border-b border-[#27272A] flex w-full items-start flex-wrap gap-x-8' >
-        <div className='flex-1'>
+      <div className='p-6 pb-0 border-b border-[#27272A] flex w-full items-stretch flex-wrap gap-x-8' >
+        <div className='flex-2'>
           <div className="flex items-center justify-between mb-6">
             <div className='flex-1'>
-              <div className="flex items-center text-[#7C3AED] text-[12px] gap-x-3">
+              <div className="flex items-center text-[#9370db] text-[12px] gap-x-3">
                 <span className='text-purple-200'>Recommended coins for 24 hours</span>
-                <Clock4 className='text-purple-200' fill='#7C3AED' size={20} />
+                <Clock4 className='text-purple-200' fill='#9370db' size={20} />
 
                 <span className='p-1 px-2 rounded-md bg-[#7c3aed26] text-white text-xs'>3 Assets</span>
               </div>
@@ -211,7 +211,7 @@ const StakingDashboard = () => {
           </div>
         </div>
       <div className="bg-[#131417] rounded-2xl p-6 border border-[#27272A]">
-        <div className='flex items-start mb-8' >
+        <div className='flex items-start flex-wrap mb-8' >
           <div className='flex-1'>
             {/* Header Section */}
             <div className="flex items-center justify-between mb-6">
@@ -231,7 +231,7 @@ const StakingDashboard = () => {
                       {" "}
                       <Share2 className="w-4 h-4" />
                     </button>
-                    <button className="flex items-center text-white text-xs hover:underline border-t border-l border-[#27272A] bg-black p-3 rounded-xl">
+                    <button className="md:flex hidden items-center text-white text-xs hover:underline border-t border-l border-[#27272A] bg-black p-3 rounded-xl">
                       View Profile
                       {/* <ExternalLink className="w-4 h-4 ml-1" /> */}
                       <ArrowUpRight size={14} className="w-4 h-4 ml-1" />
@@ -244,10 +244,10 @@ const StakingDashboard = () => {
             {/* Balance Section */}
             <div className="mb-8">
               <div className="text-[#71717A] text-sm mb-2">Current Reward Balance, AVAX</div>
-              <div className="text-white text-5xl font-semibold tracking-tight flex items-center gap-4">
+              <div className="text-white text-5xl font-semibold tracking-tight flex items-center flex-wrap gap-4">
                 31.39686
-                <div className="flex items-center space-x-3">
-                  <button className="px-4 py-2 bg-[#7C3AED] text-black rounded-xl text-sm font-medium hover:bg-[#6D28D9]">
+                <div className="flex items-center flex-wrap space-3 gap-x-2">
+                  <button className="px-4 py-2 bg-[#9370db] text-black rounded-xl text-sm font-medium hover:bg-[#6D28D9]">
                     Upgrade
                   </button>
                   <button className="px-4 py-2 text-white rounded-xl text-sm font-medium hover:bg-[#27272A] border-t border-l border-[#27272A]">
@@ -261,7 +261,7 @@ const StakingDashboard = () => {
         </div>
 
         {/* Metrics Grid */}
-        <div className="grid grid-cols-4 gap-4 mb-6 border-b border-[#27272A] pb-2">
+        <div className="grid  md:grid-cols-4 grid-cols-2 md:grid-rows-0 grid-rows-2 gap-4 mb-6 border-b border-[#27272A] pb-2">
           {/* Momentum */}
           <div className="">
             <div className="flex items-center justify-between">
@@ -303,7 +303,7 @@ const StakingDashboard = () => {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-4 gap-4 mb-6">
+        <div className="grid md:grid-cols-4 grid-cols-2 md:grid-rows-0 grid-rows-2  gap-4 mb-6">
           {/* Momentum */}
           <div className="border border-[#27272A] rounded-xl p-4">
             <div className="flex items-center justify-between mb-4">

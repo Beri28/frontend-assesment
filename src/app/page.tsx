@@ -1,5 +1,6 @@
 // types.ts (You would typically put this in a separate file like `types/index.ts`)
-import React from 'react';
+"use client"
+import React, { useState } from 'react';
 import {
   ChevronRight,
   TrendingUp,
@@ -222,6 +223,7 @@ import { ActiveStaking, colors, StakingAsset } from '@/types/types';
 import Sidebar from '@/components/Sidebar';
 import Header from '@/components/Header';
 import StakingDashboard from '@/components/StakingDashboard';
+import { Drawer, List, ListItem,ListItemText } from '@mui/material';
 
 // Mock data for staking assets (moved here for HomeDashboard component)
 const stakingAssets: StakingAsset[] = [
@@ -264,20 +266,24 @@ const activeStakingsData: ActiveStaking[] = [
 
 
 const HomeDashboard: React.FC = () => {
+  
   return (
     <div>
       {/* <Header /> */}
       <div className={`flex flex-col lg:flex-row h-[screen] bg-[${colors.background}] font-inter`}>
-        {/* <Head>
+        <Head>
           <title>Stakent Dashboard</title>
           <meta name="description" content="Stakent Dashboard UI" />
           <link rel="icon" href="/favicon.ico" />
           <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
           <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-        </Head> */}
+        </Head>
 
         {/* Sidebar */}
-        <Sidebar />
+        <div className='lg:flex hidden' >
+          <Sidebar />
+        </div>
+        {/* <Drawer>
 
         {/* Main Content */}
         <div className="flex-1 flex flex-col pt-2">
