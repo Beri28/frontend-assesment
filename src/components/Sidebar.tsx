@@ -27,53 +27,68 @@ const colors = {
     hover: 'rgba(255, 255, 255, 0.05)'
   };
 
-const navItems = [
-  { icon: LayoutDashboard, label: 'Dashboard', isActive: true },
-  { icon: Wallet, label: 'Assets' },
-  { icon: Users2, label: 'Staking Providers' },
-  { icon: Calculator, label: 'Staking Calculator' },
-  { icon: ExternalLink, label: 'Data API' },
-  { icon: Droplets, label: 'Liquid Staking', badge: 'Beta' },
-  { icon: BarChart3, label: 'Active Staking', badge: '6',isActive: false }
-];
 
-const activeStakings = [
-  { asset: 'Ethereum', amount: '$7,699.00', color: '#627EEA' },
-  { asset: 'Avalanche', amount: '$1,340.00', color: '#E84142' },
-  { asset: 'Polygon (Matic)', amount: '$540.00', color: '#8247E5' },
-  { asset: 'Solana', amount: '$980.00', color: '#14F195' }
-];
 
 export const Sidebar = () => {
+  const [navItems, setNavItems] = React.useState([
+    { icon: LayoutDashboard, label: 'Dashboard', isActive: true },
+    { icon: Wallet, label: 'Assets',isActive: false },
+    { icon: Users2, label: 'Staking Providers',isActive: false },
+    { icon: Calculator, label: 'Staking Calculator',isActive: false },
+    { icon: ExternalLink, label: 'Data API',isActive: false },
+    { icon: Droplets, label: 'Liquid Staking', badge: 'Beta',isActive: false },
+    { icon: BarChart3, label: 'Active Staking', badge: '6',isActive: false }
+  ]);
+  
+  const [activeStakings, setActiveStakings] = React.useState([
+    { asset: 'Ethereum', amount: '$7,699.00', color: '#627EEA' },
+    { asset: 'Avalanche', amount: '$1,340.00', color: '#E84142' },
+    { asset: 'Polygon (Matic)', amount: '$540.00', color: '#8247E5' },
+    { asset: 'Solana', amount: '$980.00', color: '#14F195' }
+  ]);
+  const [activeTab, setActiveTab] = React.useState('staking');
+
   return (
     <div className="w-[280px] h-screen overflow-y-auto bg-[#0D0D0F] flex flex-col  border-r border-[#27272A] sticky top-0"  style={{'scrollbarWidth':'none'}}>
       <div className="flex items-center space-x-2 mb-2 p-4 border-b border-[#27272A] w-full">
         <div className="flex items-center px-3 w-full">
           <img src="/logo.png" alt="Stakent" className="h-8 w-8" />
           <div className="ml-2 flex items-center justify-between text-white flex-1">
-            <p>
+            <p className='cursor-pointer'>
               <span className="font-semibold flex items-start">Stakent <span className="text-xs text-[#71717A] ml-1">®</span></span>
               <div className="text-xs text-[#71717A]">Top Staking Assets</div>
             </p>
             
             <span>
-              <ChevronsUpDown size={16} className="ml-1 text-[#71717A]" />
-              {/* <ChevronUp size={16} className="ml-1 text-[#71717A]" />
-              <ChevronDown size={16} className="ml-1 text-[#71717A]" /> */}
+              <ChevronsUpDown size={16} className="ml-1 text-[#71717A] hover:text-white transition-colors duration-200 cursor-pointer" />
             </span>
           </div>
         </div>
         
       </div>
       {/* Navigation Section */}
-      <div className="p-6 pt-3  space-y-1 flex-1 h-[80%] overflow-y-auto">
+      <div className="p-6 pt-3  space-y-1 flex-1 h-[80%] overflow-y-auto" style={{'scrollbarWidth':'none'}}>
         {/* Navigation Tabs */}
         <div className='mb-3 pb-5 border-b border-[#27272A]' >
           <div className="flex space-x-2 bg-[#131417] rounded-lg p-1 ">
-            <button className="px-4 py-2 bg-[#5e5e5e3b] rounded-lg text-white text-sm font-medium flex-1">
+            <button 
+              onClick={() => setActiveTab('staking')}
+              className={`px-4 py-2 rounded-lg text-sm font-medium flex-1 transition-colors ${
+                activeTab === 'staking' 
+                  ? 'bg-[#5e5e5e3b] text-white'
+                  : 'text-[#71717A] hover:bg-[rgba(255,255,255,0.05)]'
+              }`}
+            >
               Staking
             </button>
-            <button className="px-4 py-2 text-[#71717A] text-sm font-medium flex-1">
+            <button
+              onClick={() => setActiveTab('stablecoin')} 
+              className={`px-4 py-2 rounded-lg text-sm font-medium flex-1 transition-colors ${
+                activeTab === 'stablecoin'
+                  ? 'bg-[#5e5e5e3b] text-white'
+                  : 'text-[#71717A] hover:bg-[rgba(255,255,255,0.05)]'
+              }`}
+            >
               Stablecoin
             </button>
           </div>
@@ -83,12 +98,19 @@ export const Sidebar = () => {
         <nav className="space-y-1">
           {navItems.map((item, index) => (
             <div key={index}>
-              <div
-                className={`flex items-center justify-between group px-4 py-3 rounded-lg ${
+              <button
+                className={`flex w-full items-center justify-between group px-4 py-3 rounded-lg cursor-pointer transition-colors duration-200 ${
                   item.isActive
                     ? 'bg-[#131417] text-white border-r-2 border-[#27272A]'
-                    : 'text-[#71717A] hover:bg-[rgba(255,255,255,0.05)]'
+                    : 'text-[#71717A] hover:bg-[rgba(255,255,255,0.05)] active:bg-[rgba(255,255,255,0.1)]'
                 }`}
+                onClick={() => {
+                    setNavItems(navItems.map((navItem, i) => 
+                      i === index ? { ...navItem, isActive: true } 
+                    :
+                    { ...navItem, isActive: false }
+                    ));
+                }}
               >
                 <div className="flex items-center">
                   <item.icon size={20} className="mr-3" />
@@ -97,7 +119,13 @@ export const Sidebar = () => {
                 {item.badge && (
                   
                     item.badge==='6'?
-                    <button className='flex items-center gap-x-3' >
+                    <button 
+                      className='flex items-center gap-x-3 transition-transform active:scale-95' 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        item.isActive = !item.isActive;
+                      }}
+                    >
                       <span
                         className={`px-2 py-0.5 rounded-full text-xs ${
                           item.badge === '6'
@@ -107,8 +135,7 @@ export const Sidebar = () => {
                       >
                         {item.badge}
                       </span>
-
-                      <ChevronDown size={15} onClick={()=>item.isActive=true} />
+                      <ChevronDown size={15} className={`transition-transform ${item.isActive ? 'rotate-180' : ''}`} />
                     </button>
                     :
                     <span
@@ -122,12 +149,15 @@ export const Sidebar = () => {
                     </span>
                     
                 )}
-              </div>
+              </button>
               {(item.isActive  && item.label==='Active Staking'  ) &&  
-              <div className=" rounded-lg p-4">
+              <div className="rounded-lg p-4">
                 <div className="space-y-4">
                   {activeStakings.map((staking, index) => (
-                    <div key={index} className="flex items-center">
+                    <div 
+                      key={index} 
+                      className="flex items-center cursor-pointer transition-colors duration-200 p-2 rounded-lg hover:bg-[rgba(255,255,255,0.05)] active:bg-[rgba(255,255,255,0.1)]"
+                    >
                       <div
                         className="w-5 h-5 rounded-full mr-3"
                         style={{ backgroundColor: staking.color }}
@@ -148,7 +178,7 @@ export const Sidebar = () => {
       {/* Active Stakings Section */}
       <div className="mt-auto p-6">
         {/* Activate Super Button */}
-        <button className="mt-4 w-full bg-[#1D1E24] rounded-lg p-4 flex items-center justify-between group hover:bg-[#27272A] transition-colors">
+        <button className="mt-4 w-full bg-[#1D1E24] rounded-lg p-4 py-2 flex items-center justify-between group hover:bg-[#27272A] transition-colors">
           <div className="flex items-center">
             <Zap size={20} className="text-white mr-3" fill='white' />
             <div className="text-left">

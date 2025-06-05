@@ -147,15 +147,15 @@ const StakingDashboard = () => {
 
             {/* Filters */}
             <div className="lg:flex flex-wrap gap-4 gap-x-2 hidden items-center space-x-1">
-              <button className="px-4 pl-2 py-2 rounded-xl bg-[#131417] text-white text-[10px] flex items-center border-l border-t border-[#27272A]">
+              <button className="px-4 pl-2 py-2 rounded-xl bg-[#131417] text-white text-[10px] flex items-center border-l border-t border-[#27272A] hover:bg-[#27272A] transition-colors duration-200">
                 <ChevronDown size={12} className="mr-1" />
                 24H
               </button>
-              <button className="px-4 pl-2 py-2 rounded-xl bg-[#131417] text-white text-[10px] flex items-center border-l border-t border-[#27272A]">
+              <button className="px-4 pl-2 py-2 rounded-xl bg-[#131417] text-white text-[10px] flex items-center border-l border-t border-[#27272A] hover:bg-[#27272A] transition-colors duration-200">
                 <ChevronDown size={12} className="mr-1" />
                 Proof of Stake
               </button>
-              <button className="px-4 pl-2 py-2 rounded-xl bg-[#131417] text-white text-[10px] flex items-center border-l border-t border-[#27272A]">
+              <button className="px-4 pl-2 py-2 rounded-xl bg-[#131417] text-white text-[10px] flex items-center border-l border-t border-[#27272A] hover:bg-[#27272A] transition-colors duration-200">
                 <ChevronDown size={12} className="mr-1" />
                 Desc
               </button>
@@ -211,7 +211,7 @@ const StakingDashboard = () => {
           </div>
         </div>
       <div className="bg-[#131417] rounded-2xl p-6 border border-[#27272A]">
-        <div className='flex items-start' >
+        <div className='flex items-start mb-8' >
           <div className='flex-1'>
             {/* Header Section */}
             <div className="flex items-center justify-between mb-6">
