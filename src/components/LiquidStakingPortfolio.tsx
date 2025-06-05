@@ -5,9 +5,9 @@ import { Wallet } from 'lucide-react';
 
 const LiquidStakingPortfolio = () => {
   return (
-    <div className=" flex items-center justify-center p-4 max-w-[30%]">
+    <div className=" flex items-center justify-center p-4 md:max-w-[30%] ">
       {/* <div className=" bg-gradient-to-b from-[#0B061B] to-[#2C0F5A] rounded-2xl p-6 space-y-6"> */}
-      <div className=" bg-gradient-to-b from-black to-[#2C0F5A] to-purple-800 rounded-2xl p-6 space-y-6">
+      <div className=" bg-gradient-to-b from-black to-purple-800 rounded-2xl p-6 space-y-6">
         {/* Logo and Title */}
         <div className="flex items-center justify-between w-full">
           <div className="flex items-center space-x-2">
@@ -16,7 +16,7 @@ const LiquidStakingPortfolio = () => {
               <span className="text-white font-medium">Stakent</span>
             {/* </div> */}
           </div>
-          <span className="text-xs text-black bg-[#7C3AED] p-3 py-1 rounded-md">New</span>
+          <span className="text-xs text-black bg-[#9370db] p-3 py-1 rounded-md">New</span>
         </div>
 
         {/* Title and Description */}
@@ -30,7 +30,7 @@ const LiquidStakingPortfolio = () => {
         </div>
 
         {/* Connect Wallet Button */}
-        <button className="w-full bg-purple-500 hover:bg-[#6D28D9] text-white font-medium py-3 px-4 rounded-xl flex items-center justify-center space-x-2 transition-colors">
+        <button className="w-full bg-[#9370db] hover:bg-[#6D28D9] text-white font-medium py-3 px-4 rounded-xl flex items-center justify-center space-x-2 transition-colors">
           <span className='text-base text-black' >Connect with Wallet</span>
           <Wallet size={18} color='black' />
         </button>
